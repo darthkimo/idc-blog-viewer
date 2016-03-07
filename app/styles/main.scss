@@ -1,25 +1,104 @@
 // bower:scss
 // endbower
 
-body {
-  background: #fafafa;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+@import "mixins";
+@import "reset";
+
+html, body  {
+  height: 100%;
+  width: 100%;
+}
+
+html {
+  font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
   color: #333;
 }
 
-.hero-unit {
-  margin: 50px auto 0 auto;
-  width: 300px;
-  font-size: 18px;
-  font-weight: 200;
-  line-height: 30px;
-  background-color: #eee;
-  border-radius: 6px;
-  padding: 60px;
+*{
+  box-sizing: border-box;
+}
+h1 {
+  font-weight: bold;
+}
+header {
+  margin-top: 25px;
+  text-align: center;
   h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
+    font-size: 24px;
+    color: #000000;
+  }
+}
+.post-preview-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.post-preview {
+  width: 98%;
+  margin: 1%;
+  border: 1px solid #afafaf;
+  border-radius: 5px;
+  padding: 15px 15px 50px 15px;
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+  h1 {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  .thumb {
+    overflow: hidden;
+    img {
+      height: 100%;
+    }
+  }
+  .info, .info a {
+    color: #E8810F;
+  }
+  .info {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  p {
+    font-size: 14px;
+    line-height: 1.3em;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    a {
+      word-break: break-all;
+    }
+  }
+  .read-article {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    border-radius: 5px;
+    border: 1px solid #afafaf;
+    background-color: #f3f3f3;
+    padding: 10px;
+    width: 50%;
+    text-align: center;
+    color: #333333;
+    text-decoration: none;
+    &:hover {
+      color: white;
+      background-color: #666666;
+    }
+  }
+}
+nav {
+  margin-top: 30px;
+  margin-bottom: 60px;
+  text-align: center;
+  color: white;
+  button {
+    color: white;
+    border: none;
+    background-color: transparent;
   }
 }
 
@@ -28,4 +107,25 @@ body {
   background: #ccc;
   color: #000;
   padding: 0.2em 0;
+}
+
+
+@media only screen and (min-width : 768px) {
+  header {
+    h1 {
+      font-size: 32px;
+    }
+  }
+  .post-preview {
+    width: 31.3%;
+    margin: 1%;
+  }
+
+}
+
+@media only screen and (min-width : 992px) {
+  .post-preview {
+    width: 23%;
+    margin: 1%;
+  }
 }
