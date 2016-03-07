@@ -29,8 +29,8 @@ Criteria
 - NPM
 - Bower
 - Gulp
-- JQuery
 - SASS
+- modernizr
 
 ### Project Installation
 
