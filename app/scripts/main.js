@@ -1,3 +1,4 @@
+'use strict';
 (function(window){
   var postsData,
       totalSet = 0,
@@ -7,30 +8,8 @@
       pagination,
       hasSetInQueryString = Services.getQueryString('set');
 
-  function init(data){
-    postsData = data.posts;
-    totalSet =  Math.ceil(postsData.length/10);
-    postPreviewContainer = document.getElementById('post-preview-container');
-    pagination = document.getElementById('pagination');
-
-    document.getElementById('btn-next').addEventListener('click', gotoSet, false);
-    document.getElementById('btn-prev').addEventListener('click', gotoSet, false);
-    console.log(totalSet);
-
-    if(hasSetInQueryString){
-      var newSet = Number(hasSetInQueryString);
-      if(newSet<=totalSet){
-        currentSetIndex = Number(hasSetInQueryString);
-      }else{
-        manageSetHistory(currentSetIndex);
-      }
-    }
-    pagination.innerText = currentSetIndex + ' of ' + totalSet;
-    generateList(getPostsDataSet(currentSetIndex));
-  }
-
   function generateList(data){
-    postPreviewContainer.innerHTML = "";
+    postPreviewContainer.innerHTML = '';
     data.forEach(function(post){
       var content = '';
       content += '<article class="post-preview">';
@@ -71,7 +50,7 @@
 
   function manageSetHistory(setNum){
     if (history.pushState) {
-      var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?set='+setNum;
+      var newurl = window.location.protocol + '//' + window.location.host + window.location.pathname + '?set='+setNum;
       window.history.pushState({path:newurl},'',newurl);
     }
   }
@@ -86,7 +65,27 @@
     return url;
   }*/
 
+  function init(data){
+    postsData = data.posts;
+    totalSet = Math.ceil(postsData.length/10);
+    postPreviewContainer = document.getElementById('post-preview-container');
+    pagination = document.getElementById('pagination');
 
+    document.getElementById('btn-next').addEventListener('click', gotoSet, false);
+    document.getElementById('btn-prev').addEventListener('click', gotoSet, false);
+    console.log(totalSet);
+
+    if(hasSetInQueryString){
+      var newSet = Number(hasSetInQueryString);
+      if(newSet<=totalSet){
+        currentSetIndex = Number(hasSetInQueryString);
+      }else{
+        manageSetHistory(currentSetIndex);
+      }
+    }
+    pagination.innerText = currentSetIndex + ' of ' + totalSet;
+    generateList(getPostsDataSet(currentSetIndex));
+  }
   Services.getJSONP('https://public-api.wordpress.com/rest/v1/sites/idcdistro.wordpress.com/posts?',
     {
       onSuccess: init,
