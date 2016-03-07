@@ -31,8 +31,27 @@
     return string ? string[1] : null;
   };
 
-  _service.numberWithCommas = function(number) {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  _service.formatDate = function(date) {
+
+    var dateData = date.split("-"),
+      year = dateData[0],
+      month = dateData[1],
+      day = dateData[2].slice(0,2),
+      months = {
+        "01": "Jan",
+        "02": "Feb",
+        "03": "March",
+        "04": "April",
+        "05": "May",
+        "06": "June",
+        "07": "July",
+        "08": "Aug",
+        "09": "Sep",
+        "10": "Oct",
+        "11": "Nov",
+        "12": "Dec",
+      };
+    return months[month] + ' ' + day + ', ' + year;
   }
 
   window.Services = _service;
