@@ -2,7 +2,7 @@
 
 ### Overview
 - Version 1.0
-- Responsive IDC Blog Viewer App:
+- Responsive IDC Blog Viewer App
 - Live link: [idc-blog-viewer]
 
 ### Description
